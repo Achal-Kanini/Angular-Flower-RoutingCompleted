@@ -147,42 +147,42 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form style="position: relative; left: 20px;">
+        <form>
             <br>
             <div class="form-group">
                 
                 <!-- <input asp-for="FlowerId" readonly="readonly" class="form-control" hidden/> -->
-                <label for="flowerid">Flower ID: </label>
-                <input style="position: fixed; left: 150px;" readonly="readonly" id="flowerid" [(ngModel)]="orderdetail.flowerId" [ngModelOptions]="{standalone: true}" placeholder="flowerid">
+                <label for="flowerid">Flower ID: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input readonly="readonly" id="flowerid" [(ngModel)]="orderdetail.flowerId" [ngModelOptions]="{standalone: true}" placeholder="flowerid">
                 
             </div>
         <br>
             <div class="form-group">
                 
-                <label for="customerid">Customer ID: </label>
-                <input style="position: fixed; left: 150px;" readonly="readonly" id="customerid" [(ngModel)]="orderdetail.customerId" [ngModelOptions]="{standalone: true}" placeholder="customerid">
+                <label for="customerid">Customer ID: </label> &nbsp;
+                <input readonly="readonly" id="customerid" [(ngModel)]="orderdetail.customerId" [ngModelOptions]="{standalone: true}" placeholder="customerid">
                 
             </div>
             <br>
             <div class="form-group">
                 
-                <label for="cartid">Cart ID: </label>
-                <input style="position: fixed; left: 150px;" readonly="readonly" id="cartid" [(ngModel)]="orderdetail.cartId" [ngModelOptions]="{standalone: true}" placeholder="cartid">
+                <label for="cartid">Cart ID: </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input  readonly="readonly" id="cartid" [(ngModel)]="orderdetail.cartId" [ngModelOptions]="{standalone: true}" placeholder="cartid">
                 
             </div>
             <br>
             <div class="form-group">
                 
-                <label for="total">Total Price: </label>
-                <input style="position: fixed; left: 150px;" readonly="readonly" id="total" [(ngModel)]="orderdetail.totalprice" [ngModelOptions]="{standalone: true}" placeholder="total">
+                <label for="total">Total Price: </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input  readonly="readonly" id="total" [(ngModel)]="orderdetail.totalprice" [ngModelOptions]="{standalone: true}" placeholder="total">
                 
             </div>
             <br>  
                 <!-- <label asp-for="Remark" class="control-label">Want to add a remark?</label>
                 <input asp-for="Remark" class="form-control" maxlength="49"/>
                 <span asp-validation-for="Remark" class="text-danger"></span> -->
-                <label for="remarks">Remarks: </label>
-                <input style="position: fixed; left: 150px;" id="remarks" [(ngModel)]="orderdetail.remark" [ngModelOptions]="{standalone: true}" placeholder="">
+                <label for="remarks">Remarks: </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input  id="remarks" [(ngModel)]="orderdetail.remark" [ngModelOptions]="{standalone: true}" placeholder="">
             <br>
             <br>
 
