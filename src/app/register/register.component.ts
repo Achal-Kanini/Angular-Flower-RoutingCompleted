@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ICustomer } from 'Models/ICustomer';
@@ -22,7 +23,14 @@ export class RegisterComponent implements OnInit {
     password: ""
   }
 
-  constructor(private router: Router, private obj: RegisterService,private jwtHelper:JwtHelperService) { }
+  edit_emp: FormGroup;
+  constructor(public fb:FormBuilder,private router: Router, private obj: RegisterService,private jwtHelper:JwtHelperService) { 
+
+    this.edit_emp=this.fb.group(
+      {
+        name:[this.customer.name,[Validators.required,Validators.minLength(4),Validators.maxLength(20)]],
+      });
+  }
 
   ngOnInit(): void {
   }

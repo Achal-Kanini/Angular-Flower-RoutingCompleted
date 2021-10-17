@@ -44,7 +44,7 @@
 
   
   
-<form #regForm="ngForm" (ngSubmit)="postid_registerapi()">
+<form [formGroup]="edit_emp" #regForm="ngForm" (ngSubmit)="postid_registerapi()">
 
     <div class="col-lg-12 login-key">
         <img src="../../assets/images/loginlogo.jpg" id="imgloginlogo">
@@ -58,7 +58,10 @@
 
     <label>
         <p class="label-txt">ENTER YOUR FULL NAME</p>
-        <input type="text" class="input" [(ngModel)]="customer.name" [ngModelOptions]="{standalone: true}" required maxlength="49">
+        <input type="text" formControlName="name" class="input" [(ngModel)]="customer.name"  required maxlength="49">
+        <div class="error" *ngIf="edit_emp.controls['name'].errors?.minlength">Minimum length of name is 4.</div>
+        <div class="error" *ngIf="edit_emp.controls['name'].errors?.maxlength">Maximum length of name is 20.</div>
+        <div class="error" *ngIf="edit_emp.controls['name'].invalid && edit_emp.controls['name'].touched">Enter valid name.</div>
         <div class="line-box">
             <div class="line"></div>
         </div>
@@ -131,7 +134,7 @@
 
     <br>
     <div class="col-lg-6 login-btm login-button">
-        <button id="btnReg" type="submit" class="btn btn-outline-primary">REGISTER</button>
+        <button id="btnReg" type="submit" [disabled]="!edit_emp.valid" class="btn btn-outline-primary">REGISTER</button>
     </div>
 
    
