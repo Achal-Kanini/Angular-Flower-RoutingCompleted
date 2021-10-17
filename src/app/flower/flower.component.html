@@ -76,7 +76,7 @@
      }
 
 </style>
-<body>
+<div *ngIf="IsAuthendicated()">
  <header>
      <nav id="nav1" class="bord1 navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3">
          <div class="container">
@@ -93,7 +93,7 @@
                 
 
                                  <li class="nav-item">
-                                     <a style="color: black; margin-left: 40px;" class="nav-link">
+                                     <a [routerLink]="['/cart']" style="color: black; margin-left: 40px;" class="nav-link">
                                          <i class="fa fa-shopping-cart"></i>
                                      </a>
                                  </li>
@@ -138,7 +138,7 @@
          </div>
      </nav>
  </header>
-<div class="container">
+ <div class="container">
   <h1>Flower Finder</h1>
   <div class='card'>
     <div class='card-body'>
@@ -155,7 +155,7 @@
             <!-- <h4>Filtered by Occasion: {{listFilter}}</h4> -->
           </div>
         </div>
-</div>
+ </div>
   <!-- <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="form-group">
           <select formControlName="website" class="form-control">
@@ -168,9 +168,9 @@
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Find</button>
   </form>
-</div> -->
+ </div> -->
 
-<br>
+ <br>
 
 
 
@@ -199,8 +199,8 @@
       </div>
     </div>
     </div>
-</div>
-<div *ngIf='!admin'>
+ </div>
+ <div *ngIf='!admin'>
   <div class="content" >
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
       <div fxFlex="33%" *ngFor='let flower of filteredFlowers' >
@@ -223,5 +223,11 @@
     </div>
     </div>
   </div>
+ </div>
+
+<footer id="foo1" class="bord2 footer text-muted">
+  <div id="footxt" class="container">
+      &copy; 2021 - FlowerStore - ASP.net MVC and API
+  </div>
+</footer>
 </div>
-  

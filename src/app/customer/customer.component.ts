@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICustomer } from 'Models/ICustomer';
+import { jwtcustomer } from 'Models/jwtcustomer';
 import { LoginServService } from '../Service/login-serv.service';
 
 @Component({
@@ -23,6 +24,11 @@ export class CustomerComponent implements OnInit {
     password: ""
   }
 
+  jwtcust : jwtcustomer={
+    phone :"",
+    password:"",
+  }
+  token:string=""
   constructor(private router: Router, private obj: LoginServService) { }
 
 
@@ -41,12 +47,18 @@ export class CustomerComponent implements OnInit {
     this.obj.loginMethod(tempPhone, tempPass, tempType).subscribe(data=>
       {
         this.customer = data;
-          localStorage.setItem("custmid",this.customer.id.toString());
-          localStorage.setItem("userType",this.customer.vendor);
-        // console.log(this.customer);
+        this.jwtcust.phone = this.customer.phone;
+        this.jwtcust.password = this.customer.password;
+        this.obj.getToken(this.jwtcust).subscribe(data=>{
+          this.token = data;
+          localStorage.setItem("jwt",this.token);  
+          console.log(this.token);  
+        })
+
+        localStorage.setItem("custmid",this.customer.id.toString());
+        localStorage.setItem("userType",this.customer.vendor);
 
         this.router.navigate(['/flower']);
-
       })
   }
 

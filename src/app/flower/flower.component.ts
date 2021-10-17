@@ -7,6 +7,7 @@ import { SecurityContext } from '@angular/core';
 import { Injectable, Type } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-flower',
   templateUrl: './flower.component.html',
@@ -54,7 +55,7 @@ performFilter(filterBy: string): IFlower[] {
   flowers.occassion.toLocaleLowerCase().includes(filterBy));
 }
 constructor(private productService: FlowerService,
-    private sanitizer : DomSanitizer) {}
+    private sanitizer : DomSanitizer,private jwtHelper:JwtHelperService) {}
   ngOnInit(): void {
     this.usertype=localStorage.getItem("userType");
     if(this.usertype=="User"){
@@ -74,6 +75,19 @@ constructor(private productService: FlowerService,
       },
     }); 
 } 
+
+IsAuthendicated():boolean{
+  const token:string|null=localStorage.getItem("jwt");
+  if(token && !this.jwtHelper.isTokenExpired(token) && token!=null)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
 addToCart():void{
   console.log("add to cart")
 }
@@ -84,6 +98,7 @@ deleteFlower():void{
   console.log("delete flower")
 
 }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
