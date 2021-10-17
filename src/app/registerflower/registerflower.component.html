@@ -1,11 +1,11 @@
 <style>
     body {
-       background-image: url('../../assets/image/bg-image.jpg');
+       background-image: url('../../assets/images/bg-image.jpg');
        background-repeat: no-repeat;
        background-position: center; /* Center the image */
        background-size: cover; /* Resize the background image to cover the entire container */
        background-attachment: fixed;
-       height: 1000px;
+       height: 10000px;
        width: 100%;
    }
    .dropdown {
@@ -49,7 +49,7 @@
        .dropdown:hover .dropdown-content {
            display: block;
        }
-
+  
        #nav1{
        background-color: #ff7f50;
    } 
@@ -62,87 +62,71 @@
            margin-bottom: 0px;
            height: 35px;
        }
-
+  
        .bord1 {
            border-bottom: 3px solid #000;
        }
-
+  
        .bord2 {
            border-top: 3px solid #000;
        }
-
+  
        #footxt {
            color: #000;
        }
-
-</style>
-<!-- <script>
-    function encode() {
-        var selectedfile = document.getElementById("myinput").files;
-        if (selectedfile.length > 0) {
-        var imageFile = selectedfile[0];
-        var fileReader = new FileReader();
-        fileReader.onload = function(fileLoadedEvent) {
-            var srcData = fileLoadedEvent.target.result;
-            var newImage = document.createElement('img');
-            newImage.src = srcData;
-            document.getElementById("dummy").innerHTML = newImage.outerHTML;
-            document.getElementById("txt").value = document.getElementById("dummy").innerHTML;
-        }
-        fileReader.readAsDataURL(imageFile);
-        }
-    }
-    </script> -->
-    
-<body>
+  
+  </style>
+  <div *ngIf="IsAuthendicated()">
    <header>
        <nav id="nav1" class="bord1 navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3">
            <div class="container">
-
-               <a asp-controller="Sitehome" asp-action="Home"><img src="../../assets/image/logoflowerstore.png" style="height: 70px; width: 120px;"></a>
-
+  
+               <a asp-controller="Sitehome" asp-action="Home"><img src="../../assets/images/logoflowerstore.png" style="height: 70px; width: 120px;"></a>
+  
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                        aria-expanded="false" aria-label="Toggle navigation">
                    <span class="navbar-toggler-icon"></span>
                </button>
                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                    <ul class="navbar-nav flex-grow-1">
-
+  
                   
-
+  
                                    <li class="nav-item">
-                                       <a style="color: black; margin-left: 40px;" class="nav-link">
+                                       <a [routerLink]="['/cart']" style="color: black; margin-left: 40px;" class="nav-link">
                                            <i class="fa fa-shopping-cart"></i>
                                        </a>
                                    </li>
                                    
-
+  
                     
-
-
-
-
-
+  
+  
+  
+  
+  
                    <div style="margin-right: 20px;" class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
                        <ul class="navbar-nav">
                            <li class="nav-item">
                                <div class="dropdown">
                                    <button class="dropbtn">
                                        <i class='fas fa-user-circle'></i>
-
+  
                                        <i style="height: 18px; width: 18px;" class="fa fa-caret-down"></i>
                                    </button>
                                    <div class="dropdown-content">
-
-                                    <a [routerLink]="['/myorder']" style="margin-left:5px;" class="nav-link">
-                                        My Orders
-                                    </a>
-
-                                       <a style="margin-left:5px;" class="nav-link">Manage Profile</a>
+  
+                                           <a [routerLink]="['/myorder']" style="margin-left:5px;" class="nav-link">
+                                               My Orders
+                                           </a>
+  
+                                       <!-- <a  [routerLink]="['/manageProfile']" style="margin-left:5px;" class="nav-link">Manage Profile</a> -->
+  
                                        <hr>
-
-                                       <a style="margin-left:5px;" class="nav-link" >
+  
+                                       <a [routerLink]="['/logout']" style="margin-left:5px;" class="nav-link" >
                                            Logout
+  
                                        </a>
                                    </div>
                                </div>
@@ -154,7 +138,6 @@
            </div>
        </nav>
    </header>
-
 <h1>Add New Flower</h1>
 
 

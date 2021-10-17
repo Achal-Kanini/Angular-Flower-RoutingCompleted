@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { ICustomer } from 'Models/ICustomer';
 import { ICustomerPost } from 'Models/ICustomerPost';
 import { RegisterService } from '../Service/register.service';
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
     password: ""
   }
 
-  constructor(private router: Router, private obj: RegisterService) { }
+  constructor(private router: Router, private obj: RegisterService,private jwtHelper:JwtHelperService) { }
 
   ngOnInit(): void {
   }
@@ -48,5 +49,17 @@ export class RegisterComponent implements OnInit {
 
       })
   }
+  
+IsAuthendicated():boolean{
+  const token:string|null=localStorage.getItem("jwt");
+  if(token && !this.jwtHelper.isTokenExpired(token) && token!=null)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
 
 }

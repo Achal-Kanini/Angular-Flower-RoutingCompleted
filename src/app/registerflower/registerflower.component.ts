@@ -47,4 +47,16 @@ export class RegisterflowerComponent implements OnInit {
       })
 
   }
+  
+IsAuthendicated():boolean{
+  const token:string|null=localStorage.getItem("jwt");
+  if(token && !this.jwtHelper.isTokenExpired(token) && token!=null)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
 }
